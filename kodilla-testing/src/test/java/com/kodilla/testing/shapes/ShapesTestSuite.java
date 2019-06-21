@@ -78,22 +78,4 @@ public class ShapesTestSuite {
         //Then
         Assert.assertEquals(circle, retrievedShape);
     }
-
-    @Test
-    public void testShowFigures() {
-        //Given
-        ShapeCollector collector = new ShapeCollector();
-        Circle circle = new Circle(4.0);
-        collector.addFigure(circle);
-        Triangle triangle = new Triangle(4.0);
-        collector.addFigure(triangle);
-        Square square = new Square(4.0);
-        collector.addFigure(square);
-
-        //When
-        collector.showFigures();
-
-        //Then
-        Assert.assertEquals(square, collector.getFigure(2));
-    }
 }
