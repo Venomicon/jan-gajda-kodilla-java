@@ -10,14 +10,10 @@ public class StatisticsCalculator{
     int posts;
     int postPerUser;
     int commentPerUser;
-    int commentPerPost;
+    double commentPerPost;
 
     public StatisticsCalculator(Statistics statistics) {
         this.statistics = statistics;
-    }
-
-    public void calculateStatistics(Statistics statistics) {
-
     }
 
     public void calculateAdvStatistics(Statistics statistics) {
@@ -25,7 +21,7 @@ public class StatisticsCalculator{
         posts = statistics.postsCount();
         comments = statistics.commentsCount();
         if (posts > 0) {
-            commentPerPost = comments / posts;
+            commentPerPost = (double)comments / (double)posts;
         }
         if (users > 0) {
             postPerUser = posts / users;
@@ -53,7 +49,7 @@ public class StatisticsCalculator{
         return commentPerUser;
     }
 
-    public int getCommentPerPost() {
+    public double getCommentPerPost() {
         return commentPerPost;
     }
 

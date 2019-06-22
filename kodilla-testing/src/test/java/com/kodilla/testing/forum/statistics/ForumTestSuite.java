@@ -41,11 +41,11 @@ public class ForumTestSuite {
         calculator.calculateAdvStatistics(statisticsMock);
 
         //When
-        int cpp = calculator.getCommentPerPost();
+        double cpp = calculator.getCommentPerPost();
         int ppu = calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(0,cpp);
+        Assert.assertEquals(0,cpp,0.0);
         Assert.assertEquals(0,ppu);
     }
 
@@ -65,11 +65,11 @@ public class ForumTestSuite {
         calculator.calculateAdvStatistics(statisticsMock);
 
         //When
-        int cpp = calculator.getCommentPerPost();
+        double cpp = calculator.getCommentPerPost();
         int ppu = calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(0,cpp);
+        Assert.assertEquals(0,cpp,0.0);
         Assert.assertEquals(0,ppu);
     }
 
@@ -89,11 +89,11 @@ public class ForumTestSuite {
         calculator.calculateAdvStatistics(statisticsMock);
 
         //When
-        int cpp = calculator.getCommentPerPost();
+        double cpp = calculator.getCommentPerPost();
         int cpu = calculator.getCommentPerUser();
 
         //Then
-        Assert.assertEquals(0,cpp);
+        Assert.assertEquals(0,cpp,0.0);
         Assert.assertEquals(0,cpu);
     }
 
@@ -116,7 +116,7 @@ public class ForumTestSuite {
         calculator.calculateAdvStatistics(statisticsMock);
 
         //When
-        double cpp = (double)calculator.getCommentPerPost();
+        double cpp = calculator.getCommentPerPost();
         int cpu = calculator.getCommentPerUser();
         int ppu = calculator.getPostPerUser();
 
@@ -124,6 +124,7 @@ public class ForumTestSuite {
         Assert.assertEquals(0.5,cpp,0.01);
         Assert.assertEquals(1,cpu);
         Assert.assertEquals(2,ppu);
+
     }
 
     @Test
@@ -145,12 +146,12 @@ public class ForumTestSuite {
         calculator.calculateAdvStatistics(statisticsMock);
 
         //When
-        int cpp = calculator.getCommentPerPost();
+        double cpp = calculator.getCommentPerPost();
         int cpu = calculator.getCommentPerUser();
         double ppu = (double)calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(2,cpp);
+        Assert.assertEquals(2,cpp,0.0);
         Assert.assertEquals(2,cpu);
         Assert.assertEquals(1.0,ppu,0.01);
     }
@@ -171,12 +172,12 @@ public class ForumTestSuite {
         calculator.calculateAdvStatistics(statisticsMock);
 
         //When
-        int cpp = calculator.getCommentPerPost();
+        double cpp = calculator.getCommentPerPost();
         int cpu = calculator.getCommentPerUser();
         int ppu = calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(1,cpp);
+        Assert.assertEquals(1,cpp,0.0);
         Assert.assertEquals(0,cpu);
         Assert.assertEquals(0,ppu);
     }
@@ -200,12 +201,12 @@ public class ForumTestSuite {
         calculator.calculateAdvStatistics(statisticsMock);
 
         //When
-        int cpp = calculator.getCommentPerPost();
+        double cpp = calculator.getCommentPerPost();
         int cpu = calculator.getCommentPerUser();
         int ppu = calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(1,cpp);
+        Assert.assertEquals(1,cpp,0.0);
         Assert.assertEquals(1,cpu);
         Assert.assertEquals(1,ppu);
     }
