@@ -21,19 +21,6 @@ public class BookLibrary {
     }
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
-        List<Book> bookList = new ArrayList<>();
-        List<Book> resultList = new ArrayList<>();
-        if(libraryUser.lastname == "0") {
-            resultList = bookList;
-        } else if(libraryUser.lastname == "1") {
-            bookList.add(new Book("Book","Author",1999));
-            resultList = bookList;
-        } else if(libraryUser.lastname == "5") {
-            for(int i=1; i<=5; i++) {
-                bookList.add(new Book("Book "+i,"Author "+i,1995+i));
-            }
-            resultList = bookList;
-        }
-        return resultList;
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
     }
 }
