@@ -1,13 +1,11 @@
 package com.kodilla.stream;
 
 
-
-import java.time.LocalDate;
-import java.util.Map;
-import java.util.stream.Collectors;
+import com.kodilla.stream.array.*;
 
 public class StreamMain {
     public static void main(String[] args) {
-
+        int[] numbers = {3, 2, 3, 4, 6};
+        ArrayOperations.getAverage(numbers);
     }
 }
