@@ -11,7 +11,7 @@ public class ArrayOperationsTestSuite {
         int[] numbers = {3, 5, 2, 5, 2};
 
         //When
-        double avg = ArrayOperations.getAverage(numbers).getAsDouble();
+        double avg = ArrayOperations.getAverage(numbers);
 
         //Then
         double expected = 3.4;
