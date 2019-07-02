@@ -1,4 +1,4 @@
-gplugins {
+plugins {
     id 'java'
 }
 
