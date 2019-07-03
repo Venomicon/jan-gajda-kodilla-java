@@ -10,10 +10,10 @@ public interface ArrayOperations {
                 .map(n -> numbers[n])
                 .forEach(System.out::println);
 
-        OptionalDouble avg = IntStream.range(0, numbers.length)
+        double average = IntStream.range(0, numbers.length)
                 .map(n -> numbers[n])
-                .average();
-        double average = avg.getAsDouble();
+                .average().getAsDouble();
+
         System.out.println("\nThe average of elements = " + average);
         return average;
     }
