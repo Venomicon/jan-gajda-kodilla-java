@@ -2,40 +2,32 @@ package com.kodilla.exception.test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class FlightFinder {
     public void findFlight(Flight flight) throws RouteNotFoundException {
         HashMap<String, Boolean> possibleFlights = new HashMap<>();
-        possibleFlights.put("WAW", true);
         possibleFlights.put("KRK", true);
-        possibleFlights.put("GDA", false);
+        possibleFlights.put("GDA", true);
+        possibleFlights.put("WAW", false);
 
-        if(flight.getArrivalAirport() != "GDA") {
-            System.out.println("Flight to airport " + flight.getArrivalAirport() + " is available.");
-        } else {
-            throw new RouteNotFoundException("Flight to airport " + flight.getArrivalAirport() + " is not available.");
+        for(Map.Entry<String, Boolean> entry: possibleFlights.entrySet()) {
+            if(entry.getValue()) {
+                System.out.println("Flight to airport " + entry.getKey() + " is available.");
+            } else {
+                throw new RouteNotFoundException("Flight to airport " + entry.getKey() + " is unavailable.");
+            }
         }
-
-
     }
 
     public static void main(String[] args) {
-        Flight flightOne = new Flight("JFK","WAW");
-        Flight flightTwo = new Flight("JFK", "GDA");
-        Flight flightThree = new Flight("JFK", "KRK");
+        Flight flightOne = new Flight("JFK","KRK");
         FlightFinder finder = new FlightFinder();
 
-        ArrayList<Flight> flights = new ArrayList<>();
-        flights.add(flightOne);
-        flights.add(flightTwo);
-        flights.add(flightThree);
-
-        for(Flight flight: flights) {
-            try {
-                finder.findFlight(flight);
-            } catch (RouteNotFoundException e) {
-                System.out.println("ERROR -->   " + e);
-            }
+        try {
+            finder.findFlight(flightOne);
+        } catch (RouteNotFoundException e) {
+            System.out.println("ERROR -->   " + e);
         }
     }
 }
