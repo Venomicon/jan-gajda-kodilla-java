@@ -11,7 +11,7 @@ public class FlightFinder {
         possibleFlights.put("GDA", false);
 
         if(flight.getArrivalAirport() != "GDA") {
-            System.out.println("This flight is available.");
+            System.out.println("Flight to airport " + flight.getArrivalAirport() + " is available.");
         } else {
             throw new RouteNotFoundException("Flight to airport " + flight.getArrivalAirport() + " is not available.");
         }
