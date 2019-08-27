@@ -1,8 +1,8 @@
-package com.kodilla.good.patterns.challenges;
+package com.kodilla.good.patterns.challenges.MovieStore;
 
 import java.util.*;
 
-class MovieStore {
+public class MovieStore {
     public Map<String, List<String>> getMovies() {
 
         List<String> ironManTranslations = new ArrayList<>();
