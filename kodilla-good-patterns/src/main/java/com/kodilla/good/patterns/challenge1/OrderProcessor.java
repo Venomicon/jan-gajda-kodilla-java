@@ -1,5 +1,7 @@
 package com.kodilla.good.patterns.challenge1;
 
+import java.util.Iterator;
+
 public class OrderProcessor {
     private PaymentService paymentService;
     private DeliveryService deliveryService;
@@ -12,22 +14,25 @@ public class OrderProcessor {
     }
 
     public OrderDto processOrder(OrderRequest orderRequest) {
-        for (int i = 0; i < producersCollection.getCollection().size(); i++) {
-            if (producersCollection.getCollection().get(i).getAvailableProducts().contains(orderRequest.getOrder().getProduct())) {
-                if (paymentService.processPayment()) {
-                    deliveryService.deliverOrder();
-                    return new OrderDto(orderRequest.getUser(), orderRequest.getOrder(), true, true, true);
-                    System.out.println("Your order is being processed by " + producersCollection.getCollection().get(i));
-                    break;
-                } else {
-                    return new OrderDto(orderRequest.getUser(), orderRequest.getOrder(), true, false, false);
-                    System.out.println("Failed to complete your payment");
-                    break;
+        boolean isPayed = paymentService.processPayment();
+        if(producersCollection.getCollection().size() > 0) {
+            for (int i = 0; i < producersCollection.getCollection().size(); i++) {
+                if (producersCollection.getCollection().get(i).getAvailableProducts().contains(orderRequest.getOrder().getProduct())) {
+                    if (isPayed) {
+                        deliveryService.deliverOrder();
+                        System.out.println("Your order is being processed by " + producersCollection.getCollection().get(i));
+                        return new OrderDto(orderRequest.getUser(), orderRequest.getOrder(), true, true, true);
+                    } else {
+                        System.out.println("Failed to complete your payment");
+                        return new OrderDto(orderRequest.getUser(), orderRequest.getOrder(), true, false, false);
+                    }
                 }
-            } else {
-                return new OrderDto(orderRequest.getUser(), orderRequest.getOrder(), false, false, false);
-                System.out.println(orderRequest.getOrder().getProduct() + " is not available in any store.");
             }
+        } else {
+            System.out.println("There are currently no stores featured in Food2Door.");
         }
+        return null;
     }
 }
+
+/**/

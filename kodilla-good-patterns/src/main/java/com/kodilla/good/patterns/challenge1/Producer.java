@@ -38,4 +38,9 @@ public class Producer {
         System.out.println("Products available at " + getName() + ":");
         availableProducts.forEach(System.out::println);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

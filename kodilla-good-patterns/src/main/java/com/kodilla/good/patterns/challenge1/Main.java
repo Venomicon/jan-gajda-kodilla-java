@@ -5,11 +5,10 @@ public class Main {
         Producer producer1 = new Producer("Shop 1");
         producer1.addProduct("Apples");
         producer1.addProduct("Honey");
-        producer1.addProduct("Cherries");
 
         Producer producer2 = new Producer("Shop 2");
-        producer2.addProduct("Apples");
-        producer2.addProduct("Honey");
+        producer2.addProduct("Beer");
+        producer2.addProduct("Pears");
 
         Producer producer3 = new Producer("Shop 3");
         producer3.addProduct("Beer");
@@ -21,7 +20,7 @@ public class Main {
         producersCollection.addProducer(producer3);
 
         User user = new User("jacob123", "Jakub", "Kowalski", "jacob123@gmail.com", "Gagarina 12, Kraków");
-        Order order = new Order(123456, "Beer", 12);
+        Order order = new Order(123456, "Cherries", 12);
         OrderRequest orderRequest = new OrderRequest(user, order);
 
         OrderProcessor orderProcessor = new OrderProcessor(new PaymentService(), new DeliveryService(), producersCollection);
