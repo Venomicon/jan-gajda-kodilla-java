@@ -22,4 +22,13 @@ public class Order {
     public int getQuantity() {
         return quantity;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderNumber=" + orderNumber +
+                ", product='" + product + '\'' +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

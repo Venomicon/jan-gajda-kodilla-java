@@ -24,6 +24,7 @@ public class Main {
         OrderRequest orderRequest = new OrderRequest(user, order);
 
         OrderProcessor orderProcessor = new OrderProcessor(new PaymentService(), new DeliveryService(), producersCollection);
-        orderProcessor.processOrder(orderRequest);
+        OrderDto dto = orderProcessor.processOrder(orderRequest);
+        System.out.println(dto);
     }
 }

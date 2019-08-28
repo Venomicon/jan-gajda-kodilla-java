@@ -14,4 +14,15 @@ public class OrderDto {
         this.isPayed = isPayed;
         this.isDelivered = isDelivered;
     }
+
+    @Override
+    public String toString() {
+        return "OrderDto{" +
+                "user=" + user +
+                ", order=" + order +
+                ", isAvailable=" + isAvailable +
+                ", isPayed=" + isPayed +
+                ", isDelivered=" + isDelivered +
+                '}';
+    }
 }
