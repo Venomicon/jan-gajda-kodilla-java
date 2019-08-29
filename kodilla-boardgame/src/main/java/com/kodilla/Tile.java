@@ -12,6 +12,6 @@ public class Tile extends Rectangle {
 
         setFill(Color.TRANSPARENT);
 
-        relocate(x * RoyalGameOfUr.TILE_SIZE, y*RoyalGameOfUr.TILE_SIZE);
+        relocate(x * RoyalGameOfUr.TILE_SIZE, y * RoyalGameOfUr.TILE_SIZE);
     }
 }

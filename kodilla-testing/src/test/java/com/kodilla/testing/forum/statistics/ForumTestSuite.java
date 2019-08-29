@@ -4,6 +4,7 @@ import java.util.*;
 
 import jdk.internal.dynalink.beans.StaticClass;
 import org.junit.*;
+
 import static org.mockito.Mockito.*;
 
 public class ForumTestSuite {
@@ -26,7 +27,7 @@ public class ForumTestSuite {
     }
 
     @Test
-    public void testPosts0 () {
+    public void testPosts0() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
 
@@ -45,12 +46,12 @@ public class ForumTestSuite {
         int ppu = calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(0,cpp,0.0);
-        Assert.assertEquals(0,ppu);
+        Assert.assertEquals(0, cpp, 0.0);
+        Assert.assertEquals(0, ppu);
     }
 
     @Test
-    public void testPosts1000 () {
+    public void testPosts1000() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
 
@@ -69,12 +70,12 @@ public class ForumTestSuite {
         int ppu = calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(0,cpp,0.0);
-        Assert.assertEquals(0,ppu);
+        Assert.assertEquals(0, cpp, 0.0);
+        Assert.assertEquals(0, ppu);
     }
 
     @Test
-    public void testComments0 () {
+    public void testComments0() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
 
@@ -93,19 +94,19 @@ public class ForumTestSuite {
         int cpu = calculator.getCommentPerUser();
 
         //Then
-        Assert.assertEquals(0,cpp,0.0);
-        Assert.assertEquals(0,cpu);
+        Assert.assertEquals(0, cpp, 0.0);
+        Assert.assertEquals(0, cpu);
     }
 
     @Test
-    public void testMorePosts () {
+    public void testMorePosts() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
 
         int postsMock = 100;
         int commentsMock = 50;
         List<String> usersMock = new ArrayList<String>();
-        for(int i=0; i<50;i++) {
+        for (int i = 0; i < 50; i++) {
             usersMock.add("User " + i);
         }
         when(statisticsMock.postsCount()).thenReturn(postsMock);
@@ -121,21 +122,21 @@ public class ForumTestSuite {
         int ppu = calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(0.5,cpp,0.01);
-        Assert.assertEquals(1,cpu);
-        Assert.assertEquals(2,ppu);
+        Assert.assertEquals(0.5, cpp, 0.01);
+        Assert.assertEquals(1, cpu);
+        Assert.assertEquals(2, ppu);
 
     }
 
     @Test
-    public void testMoreComments () {
+    public void testMoreComments() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
 
         int postsMock = 50;
         int commentsMock = 100;
         List<String> usersMock = new ArrayList<String>();
-        for(int i=0; i<50;i++) {
+        for (int i = 0; i < 50; i++) {
             usersMock.add("User " + i);
         }
         when(statisticsMock.postsCount()).thenReturn(postsMock);
@@ -148,16 +149,16 @@ public class ForumTestSuite {
         //When
         double cpp = calculator.getCommentPerPost();
         int cpu = calculator.getCommentPerUser();
-        double ppu = (double)calculator.getPostPerUser();
+        double ppu = (double) calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(2,cpp,0.0);
-        Assert.assertEquals(2,cpu);
-        Assert.assertEquals(1.0,ppu,0.01);
+        Assert.assertEquals(2, cpp, 0.0);
+        Assert.assertEquals(2, cpu);
+        Assert.assertEquals(1.0, ppu, 0.01);
     }
 
     @Test
-    public void testUsers0 () {
+    public void testUsers0() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
 
@@ -177,20 +178,20 @@ public class ForumTestSuite {
         int ppu = calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(1,cpp,0.0);
-        Assert.assertEquals(0,cpu);
-        Assert.assertEquals(0,ppu);
+        Assert.assertEquals(1, cpp, 0.0);
+        Assert.assertEquals(0, cpu);
+        Assert.assertEquals(0, ppu);
     }
 
     @Test
-    public void testUsers100 () {
+    public void testUsers100() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
 
         int postsMock = 100;
         int commentsMock = 100;
         List<String> usersMock = new ArrayList<String>();
-        for(int i=0; i<100;i++) {
+        for (int i = 0; i < 100; i++) {
             usersMock.add("User " + i);
         }
         when(statisticsMock.postsCount()).thenReturn(postsMock);
@@ -206,8 +207,8 @@ public class ForumTestSuite {
         int ppu = calculator.getPostPerUser();
 
         //Then
-        Assert.assertEquals(1,cpp,0.0);
-        Assert.assertEquals(1,cpu);
-        Assert.assertEquals(1,ppu);
+        Assert.assertEquals(1, cpp, 0.0);
+        Assert.assertEquals(1, cpu);
+        Assert.assertEquals(1, ppu);
     }
 }

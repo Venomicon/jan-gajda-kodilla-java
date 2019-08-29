@@ -31,7 +31,7 @@ public class Producer {
     }
 
     public ArrayList<String> getAvailableProducts() {
-        return  availableProducts;
+        return availableProducts;
     }
 
     public void showProducts() {

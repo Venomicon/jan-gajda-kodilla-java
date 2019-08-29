@@ -6,6 +6,6 @@ public class OrderRequestRetriever {
         User user = new User("Jan", "Kowalski", "kowal22");
         Order order = new Order(123456, "Monitor BENQ", 1499.99, user);
 
-        return new OrderRequest(user,order);
+        return new OrderRequest(user, order);
     }
 }

@@ -13,7 +13,7 @@ public class Piece extends Circle {
         super(50);
         setStroke(Color.BLACK);
         setStrokeWidth(4);
-        if(player == 1) {
+        if (player == 1) {
             setFill(Color.BLUE);
         } else if (player == 2) {
             setFill(Color.RED);
@@ -32,9 +32,9 @@ public class Piece extends Circle {
     }
 
     public int getPlayer() {
-        if(player == 1) {
+        if (player == 1) {
             return 1;
-        }else{
+        } else {
             return 2;
         }
     }

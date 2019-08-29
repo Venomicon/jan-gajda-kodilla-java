@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import sun.swing.MenuItemLayoutHelper;
 
-public class RoyalGameOfUr extends Application{
+public class RoyalGameOfUr extends Application {
     private Image imageback = new Image("file:src/main/resources/BoardGame/board.png");
     private FlowPane pieces = new FlowPane(Orientation.HORIZONTAL);
     BackgroundSize backgroundSize = new BackgroundSize(100, 100, true, true, true, false);
@@ -37,9 +37,9 @@ public class RoyalGameOfUr extends Application{
         grid.setAlignment(Pos.TOP_LEFT);
         grid.setBackground(background);
         grid.setGridLinesVisible(true);
-        grid.setPadding(new Insets(0,0,0,0));
-        for(int x=0; x<WIDTH; x++) {
-            for(int y=0; y<HEIGHT; y++){
+        grid.setPadding(new Insets(0, 0, 0, 0));
+        for (int x = 0; x < WIDTH; x++) {
+            for (int y = 0; y < HEIGHT; y++) {
                 Tile tile = new Tile(x, y);
 
                 grid.add(tile, x, y);
@@ -68,14 +68,14 @@ public class RoyalGameOfUr extends Application{
         diceRoll.setText("Roll dice");
         diceRoll.setOnAction((e) -> {
             int result = Dice.roll();
-            rollResult.setText("Result:  "+result);
+            rollResult.setText("Result:  " + result);
         });
         Tooltip tooltip1 = new Tooltip("Rolls 4 tetrahedral dice.");
         diceRoll.setTooltip(tooltip1);
 
         VBox buttons = new VBox(diceRoll, rollResult);
         buttons.setAlignment(Pos.CENTER);
-        buttons.setPadding(new Insets(0,50,0,0));
+        buttons.setPadding(new Insets(0, 50, 0, 0));
         buttons.setSpacing(10);
 
         Piece piece1 = new Piece(2);
@@ -83,7 +83,7 @@ public class RoyalGameOfUr extends Application{
 
         grid.add(piece1, 0, 0);
         grid.add(piece2, 2, 0);
-        grid.add(scorebox,4,0);
+        grid.add(scorebox, 4, 0);
         grid.add(buttons, 4, 2);
         ObservableList<ColumnConstraints> columnConstraints = grid.getColumnConstraints();
         System.out.println(columnConstraints);

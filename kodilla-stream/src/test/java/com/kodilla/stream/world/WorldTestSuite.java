@@ -1,6 +1,7 @@
 package com.kodilla.stream.world;
 
 import org.junit.*;
+
 import java.math.BigDecimal;
 import java.util.*;
 

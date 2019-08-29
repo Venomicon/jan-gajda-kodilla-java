@@ -16,7 +16,7 @@ public class FlightsList {
     public void addFlight(Flight flight) {
         if (flights.contains(flight)) {
             System.out.println(flight + " is already listed.");
-        } else if(flight.getArrivalAirport().equals(flight.getDepartureAirport())) {
+        } else if (flight.getArrivalAirport().equals(flight.getDepartureAirport())) {
             System.out.println("Incorrect airport values.");
         } else {
             flights.add(flight);

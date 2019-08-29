@@ -1,4 +1,5 @@
 package com.kodilla;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,6 +12,7 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+
 import java.util.Random;
 
 public class TicTacToe extends Application implements EventHandler<ActionEvent> {
@@ -31,19 +33,19 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
     }
 
     private void startGame(Stage stage) {
-    //HBox:
+        //HBox:
         HBox scoreBox = new HBox(score);
         scoreBox.setAlignment(Pos.TOP_CENTER);
         scoreBox.setPadding(new Insets(10, 0, 0, 0));
         score.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 20));
 
-    //HBox:
+        //HBox:
         HBox labelBox = new HBox(label);
         labelBox.setAlignment(Pos.TOP_CENTER);
         labelBox.setPadding(new Insets(10, 0, 0, 410));
         label.setFont(Font.font("Arial", FontWeight.EXTRA_BOLD, 20));
 
-    //Grid:
+        //Grid:
         grid.setGridLinesVisible(true);
         grid.setPrefWidth(200);
         grid.setPrefHeight(200);
@@ -69,7 +71,7 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
         buttons[7] = b8;
         buttons[8] = b9;
 
-        for(int i=0; i<9; i++) {
+        for (int i = 0; i < 9; i++) {
             buttons[i].setOnAction(this);
         }
 
@@ -83,11 +85,11 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
         grid.add(b8, 1, 2);
         grid.add(b9, 2, 2);
 
-    //HBox:
+        //HBox:
         Button newGame = new Button("New Game");
         newGame.setOnAction(event -> {
             label.setText("");
-            for(int i=0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setState(0);
                 buttons[i].setDisable(false);
             }
@@ -106,7 +108,7 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
             score2 = 0;
             label.setText(score1 + " - " + score2);
         });
-        resetScore.setPrefSize(100,40);
+        resetScore.setPrefSize(100, 40);
         resetScore.setOnMouseEntered(event -> {
             resetScore.setCursor(Cursor.HAND);
         });
@@ -122,10 +124,10 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
 
         Scene scene = new Scene(root, 600, 640);
 
-    //Main menu:
+        //Main menu:
         Button single = new Button("Player VS Computer");
         single.setOnAction(event -> stage.setScene(scene));
-        single.setPrefSize(200,50);
+        single.setPrefSize(200, 50);
         single.setFont(Font.font("Arial", FontWeight.BOLD, 18));
 
         Button multi = new Button("Player VS Player");
@@ -133,19 +135,19 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
             singlePlayer = false;
             stage.setScene(scene);
         });
-        multi.setPrefSize(200,50);
+        multi.setPrefSize(200, 50);
         multi.setFont(Font.font("Arial", FontWeight.BOLD, 18));
 
         VBox vBox = new VBox();
         vBox.getChildren().addAll(single, multi);
         vBox.setAlignment(Pos.CENTER);
-        vBox.setPadding(new Insets(250,0,0,0));
+        vBox.setPadding(new Insets(250, 0, 0, 0));
         vBox.setSpacing(40);
 
         Label title = new Label("Tic Tac Toe");
-        title.setFont(Font.font("Arial",FontPosture.ITALIC, 72));
+        title.setFont(Font.font("Arial", FontPosture.ITALIC, 72));
         title.setAlignment(Pos.TOP_CENTER);
-        title.setPadding(new Insets(0,0,300,0));
+        title.setPadding(new Insets(0, 0, 300, 0));
 
 
         StackPane mainRoot = new StackPane(title, vBox);
@@ -164,13 +166,13 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
 
     @Override
     public void handle(ActionEvent event) {
-        for(int i=0; i<9; i++) {
-            if(buttons[i] == event.getSource()){
-                if(singlePlayer) {
+        for (int i = 0; i < 9; i++) {
+            if (buttons[i] == event.getSource()) {
+                if (singlePlayer) {
                     buttons[i].setState(1);
                     checkScore();
                     AI();
-                } else if(playerTurn){
+                } else if (playerTurn) {
                     buttons[i].setState(1);
                     playerTurn = false;
                     checkScore();
@@ -184,122 +186,122 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
     }
 
     private void checkScore() {
-        if(!singlePlayer) {
+        if (!singlePlayer) {
             p1 = "Player 1";
             p2 = "Player 2";
         }
         //Row 1:
-        if(buttons[0].getState() + buttons[1].getState() + buttons[2].getState() == 3) {
+        if (buttons[0].getState() + buttons[1].getState() + buttons[2].getState() == 3) {
             label.setText(p1 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score1++;
             score.setText(score1 + " - " + score2);
         }
-        if(buttons[0].getState() + buttons[1].getState() + buttons[2].getState() == -3) {
+        if (buttons[0].getState() + buttons[1].getState() + buttons[2].getState() == -3) {
             label.setText(p2 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score2++;
             score.setText(score1 + " - " + score2);
         }
         //Row 2:
-        if(buttons[3].getState() + buttons[4].getState() + buttons[5].getState() == 3) {
+        if (buttons[3].getState() + buttons[4].getState() + buttons[5].getState() == 3) {
             label.setText(p1 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score1++;
             score.setText(score1 + " - " + score2);
         }
-        if(buttons[3].getState() + buttons[4].getState() + buttons[5].getState() == -3) {
+        if (buttons[3].getState() + buttons[4].getState() + buttons[5].getState() == -3) {
             label.setText(p2 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score2++;
             score.setText(score1 + " - " + score2);
         }
         //Row 3:
-        if(buttons[6].getState() + buttons[7].getState() + buttons[8].getState() == 3) {
+        if (buttons[6].getState() + buttons[7].getState() + buttons[8].getState() == 3) {
             label.setText(p1 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score1++;
             score.setText(score1 + " - " + score2);
         }
-        if(buttons[6].getState() + buttons[7].getState() + buttons[8].getState() == -3) {
+        if (buttons[6].getState() + buttons[7].getState() + buttons[8].getState() == -3) {
             label.setText(p2 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score2++;
             score.setText(score1 + " - " + score2);
         }
         //Column 1:
-        if(buttons[0].getState() + buttons[3].getState() + buttons[6].getState() == 3) {
+        if (buttons[0].getState() + buttons[3].getState() + buttons[6].getState() == 3) {
             label.setText(p1 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score1++;
             score.setText(score1 + " - " + score2);
         }
-        if(buttons[0].getState() + buttons[3].getState() + buttons[6].getState() == -3) {
+        if (buttons[0].getState() + buttons[3].getState() + buttons[6].getState() == -3) {
             label.setText(p2 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score2++;
             score.setText(score1 + " - " + score2);
         }
         //Column 2:
-        if(buttons[1].getState() + buttons[4].getState() + buttons[7].getState() == 3) {
+        if (buttons[1].getState() + buttons[4].getState() + buttons[7].getState() == 3) {
             label.setText(p1 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score1++;
             score.setText(score1 + " - " + score2);
         }
-        if(buttons[1].getState() + buttons[4].getState() + buttons[7].getState() == -3) {
+        if (buttons[1].getState() + buttons[4].getState() + buttons[7].getState() == -3) {
             label.setText(p2 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score2++;
             score.setText(score1 + " - " + score2);
         }
         //Column 3:
-        if(buttons[2].getState() + buttons[5].getState() + buttons[8].getState() == 3) {
+        if (buttons[2].getState() + buttons[5].getState() + buttons[8].getState() == 3) {
             label.setText(p1 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score1++;
             score.setText(score1 + " - " + score2);
         }
-        if(buttons[2].getState() + buttons[5].getState() + buttons[8].getState() == -3) {
+        if (buttons[2].getState() + buttons[5].getState() + buttons[8].getState() == -3) {
             label.setText(p2 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score2++;
             score.setText(score1 + " - " + score2);
         }
         //Diagonal 1:
-        if(buttons[0].getState() + buttons[4].getState() + buttons[8].getState() == 3) {
+        if (buttons[0].getState() + buttons[4].getState() + buttons[8].getState() == 3) {
             label.setText(p1 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score1++;
             score.setText(score1 + " - " + score2);
         }
-        if(buttons[0].getState() + buttons[4].getState() + buttons[8].getState() == -3) {
+        if (buttons[0].getState() + buttons[4].getState() + buttons[8].getState() == -3) {
             label.setText(p2 + " won!");
             for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
@@ -308,17 +310,17 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
             score.setText(score1 + " - " + score2);
         }
         //Diagonal 2:
-        if(buttons[2].getState() + buttons[4].getState() + buttons[6].getState() == 3) {
+        if (buttons[2].getState() + buttons[4].getState() + buttons[6].getState() == 3) {
             label.setText(p1 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score1++;
             score.setText(score1 + " - " + score2);
         }
-        if(buttons[2].getState() + buttons[4].getState() + buttons[6].getState() == -3) {
+        if (buttons[2].getState() + buttons[4].getState() + buttons[6].getState() == -3) {
             label.setText(p2 + " won!");
-            for(int i= 0; i<9; i++) {
+            for (int i = 0; i < 9; i++) {
                 buttons[i].setDisable(true);
             }
             score2++;
@@ -328,84 +330,84 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
     }
 
     private void AI() {
-        if(buttons[0].getState() + buttons[1].getState() == -2 || buttons[1].getState() + buttons[2].getState() == -2 || buttons[0].getState() + buttons[2].getState() == -2) {
-            if(buttons[0].getState() == 0) {
+        if (buttons[0].getState() + buttons[1].getState() == -2 || buttons[1].getState() + buttons[2].getState() == -2 || buttons[0].getState() + buttons[2].getState() == -2) {
+            if (buttons[0].getState() == 0) {
                 buttons[0].setState(-1);
                 checkScore();
-            } else if(buttons[1].getState() == 0) {
+            } else if (buttons[1].getState() == 0) {
                 buttons[1].setState(-1);
                 checkScore();
-            } else if(buttons[2].getState() == 0) {
+            } else if (buttons[2].getState() == 0) {
                 buttons[2].setState(-1);
                 checkScore();
             }
-        } else if(buttons[3].getState() + buttons[4].getState() == -2 || buttons[4].getState() + buttons[5].getState() == -2 || buttons[3].getState() + buttons[5].getState() == -2) {
-            if(buttons[3].getState() == 0) {
+        } else if (buttons[3].getState() + buttons[4].getState() == -2 || buttons[4].getState() + buttons[5].getState() == -2 || buttons[3].getState() + buttons[5].getState() == -2) {
+            if (buttons[3].getState() == 0) {
                 buttons[3].setState(-1);
                 checkScore();
-            } else if(buttons[4].getState() == 0) {
+            } else if (buttons[4].getState() == 0) {
                 buttons[4].setState(-1);
                 checkScore();
-            } else if(buttons[5].getState() == 0) {
+            } else if (buttons[5].getState() == 0) {
                 buttons[5].setState(-1);
                 checkScore();
             }
-        } else if(buttons[6].getState() + buttons[7].getState() == -2 || buttons[7].getState() + buttons[8].getState() == -2 || buttons[6].getState() + buttons[8].getState() == -2) {
-            if(buttons[6].getState() == 0) {
+        } else if (buttons[6].getState() + buttons[7].getState() == -2 || buttons[7].getState() + buttons[8].getState() == -2 || buttons[6].getState() + buttons[8].getState() == -2) {
+            if (buttons[6].getState() == 0) {
                 buttons[6].setState(-1);
                 checkScore();
-            } else if(buttons[7].getState() == 0) {
+            } else if (buttons[7].getState() == 0) {
                 buttons[7].setState(-1);
                 checkScore();
-            } else if(buttons[8].getState() == 0) {
+            } else if (buttons[8].getState() == 0) {
                 buttons[8].setState(-1);
                 checkScore();
             }
-        } else if(buttons[0].getState() + buttons[3].getState() == -2 || buttons[3].getState() + buttons[6].getState() == -2 || buttons[0].getState() + buttons[6].getState() == -2) {
-            if(buttons[0].getState() == 0) {
+        } else if (buttons[0].getState() + buttons[3].getState() == -2 || buttons[3].getState() + buttons[6].getState() == -2 || buttons[0].getState() + buttons[6].getState() == -2) {
+            if (buttons[0].getState() == 0) {
                 buttons[0].setState(-1);
                 checkScore();
-            } else if(buttons[3].getState() == 0) {
+            } else if (buttons[3].getState() == 0) {
                 buttons[3].setState(-1);
                 checkScore();
-            } else if(buttons[6].getState() == 0) {
+            } else if (buttons[6].getState() == 0) {
                 buttons[6].setState(-1);
                 checkScore();
             }
-        } else if(buttons[1].getState() + buttons[4].getState() == -2 || buttons[4].getState() + buttons[7].getState() == -2 || buttons[1].getState() + buttons[7].getState() == -2) {
-            if(buttons[1].getState() == 0) {
+        } else if (buttons[1].getState() + buttons[4].getState() == -2 || buttons[4].getState() + buttons[7].getState() == -2 || buttons[1].getState() + buttons[7].getState() == -2) {
+            if (buttons[1].getState() == 0) {
                 buttons[1].setState(-1);
                 checkScore();
-            } else if(buttons[4].getState() == 0) {
+            } else if (buttons[4].getState() == 0) {
                 buttons[4].setState(-1);
                 checkScore();
-            } else if(buttons[7].getState() == 0) {
+            } else if (buttons[7].getState() == 0) {
                 buttons[7].setState(-1);
                 checkScore();
             }
-        } else if(buttons[2].getState() + buttons[5].getState() == -2 || buttons[5].getState() + buttons[8].getState() == -2 || buttons[2].getState() + buttons[8].getState() == -2) {
-            if(buttons[2].getState() == 0) {
+        } else if (buttons[2].getState() + buttons[5].getState() == -2 || buttons[5].getState() + buttons[8].getState() == -2 || buttons[2].getState() + buttons[8].getState() == -2) {
+            if (buttons[2].getState() == 0) {
                 buttons[2].setState(-1);
                 checkScore();
-            } else if(buttons[5].getState() == 0) {
+            } else if (buttons[5].getState() == 0) {
                 buttons[5].setState(-1);
                 checkScore();
-            } else if(buttons[8].getState() == 0) {
+            } else if (buttons[8].getState() == 0) {
                 buttons[8].setState(-1);
                 checkScore();
             }
-        } else if(buttons[0].getState() + buttons[4].getState() == -2 || buttons[4].getState() + buttons[8].getState() == -2 || buttons[0].getState() + buttons[8].getState() == -2) {
-            if(buttons[0].getState() == 0) {
+        } else if (buttons[0].getState() + buttons[4].getState() == -2 || buttons[4].getState() + buttons[8].getState() == -2 || buttons[0].getState() + buttons[8].getState() == -2) {
+            if (buttons[0].getState() == 0) {
                 buttons[0].setState(-1);
                 checkScore();
-            } else if(buttons[4].getState() == 0) {
+            } else if (buttons[4].getState() == 0) {
                 buttons[4].setState(-1);
                 checkScore();
-            } else if(buttons[8].getState() == 0) {
+            } else if (buttons[8].getState() == 0) {
                 buttons[8].setState(-1);
                 checkScore();
             }
-        } else if(buttons[2].getState() + buttons[4].getState() == -2 || buttons[4].getState() + buttons[6].getState() == -2 || buttons[2].getState() + buttons[6].getState() == -2) {
+        } else if (buttons[2].getState() + buttons[4].getState() == -2 || buttons[4].getState() + buttons[6].getState() == -2 || buttons[2].getState() + buttons[6].getState() == -2) {
             if (buttons[2].getState() == 0) {
                 buttons[2].setState(-1);
                 checkScore();
@@ -416,160 +418,160 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
                 buttons[6].setState(-1);
                 checkScore();
             }
-        }else if(buttons[0].getState() + buttons[1].getState() == 2 || buttons[1].getState() + buttons[2].getState() == 2 || buttons[0].getState() + buttons[2].getState() == 2) {
-            if(buttons[0].getState() == 0) {
+        } else if (buttons[0].getState() + buttons[1].getState() == 2 || buttons[1].getState() + buttons[2].getState() == 2 || buttons[0].getState() + buttons[2].getState() == 2) {
+            if (buttons[0].getState() == 0) {
                 buttons[0].setState(-1);
                 checkScore();
-            } else if(buttons[1].getState() == 0) {
+            } else if (buttons[1].getState() == 0) {
                 buttons[1].setState(-1);
                 checkScore();
-            } else if(buttons[2].getState() == 0) {
+            } else if (buttons[2].getState() == 0) {
                 buttons[2].setState(-1);
                 checkScore();
             } else {
-                for(int x=0; x<200; x++) {
+                for (int x = 0; x < 200; x++) {
                     int random = generator.nextInt(9);
-                    if(buttons[random].getState() == 0) {
+                    if (buttons[random].getState() == 0) {
                         buttons[random].setState(-1);
                         checkScore();
                         break;
                     }
                 }
             }
-        } else if(buttons[3].getState() + buttons[4].getState() == 2 || buttons[4].getState() + buttons[5].getState() == 2 || buttons[3].getState() + buttons[5].getState() == 2) {
-            if(buttons[3].getState() == 0) {
+        } else if (buttons[3].getState() + buttons[4].getState() == 2 || buttons[4].getState() + buttons[5].getState() == 2 || buttons[3].getState() + buttons[5].getState() == 2) {
+            if (buttons[3].getState() == 0) {
                 buttons[3].setState(-1);
                 checkScore();
-            } else if(buttons[4].getState() == 0) {
+            } else if (buttons[4].getState() == 0) {
                 buttons[4].setState(-1);
                 checkScore();
-            } else if(buttons[5].getState() == 0) {
+            } else if (buttons[5].getState() == 0) {
                 buttons[5].setState(-1);
                 checkScore();
             } else {
-                for(int x=0; x<200; x++) {
+                for (int x = 0; x < 200; x++) {
                     int random = generator.nextInt(9);
-                    if(buttons[random].getState() == 0) {
+                    if (buttons[random].getState() == 0) {
                         buttons[random].setState(-1);
                         checkScore();
                         break;
                     }
                 }
             }
-        } else if(buttons[6].getState() + buttons[7].getState() == 2 || buttons[7].getState() + buttons[8].getState() == 2 || buttons[6].getState() + buttons[8].getState() == 2) {
-            if(buttons[6].getState() == 0) {
+        } else if (buttons[6].getState() + buttons[7].getState() == 2 || buttons[7].getState() + buttons[8].getState() == 2 || buttons[6].getState() + buttons[8].getState() == 2) {
+            if (buttons[6].getState() == 0) {
                 buttons[6].setState(-1);
                 checkScore();
-            } else if(buttons[7].getState() == 0) {
+            } else if (buttons[7].getState() == 0) {
                 buttons[7].setState(-1);
                 checkScore();
-            } else if(buttons[8].getState() == 0) {
+            } else if (buttons[8].getState() == 0) {
                 buttons[8].setState(-1);
                 checkScore();
             } else {
-                for(int x=0; x<200; x++) {
+                for (int x = 0; x < 200; x++) {
                     int random = generator.nextInt(9);
-                    if(buttons[random].getState() == 0) {
+                    if (buttons[random].getState() == 0) {
                         buttons[random].setState(-1);
                         checkScore();
                         break;
                     }
                 }
             }
-        } else if(buttons[0].getState() + buttons[3].getState() == 2 || buttons[3].getState() + buttons[6].getState() == 2 || buttons[0].getState() + buttons[6].getState() == 2) {
-            if(buttons[0].getState() == 0) {
+        } else if (buttons[0].getState() + buttons[3].getState() == 2 || buttons[3].getState() + buttons[6].getState() == 2 || buttons[0].getState() + buttons[6].getState() == 2) {
+            if (buttons[0].getState() == 0) {
                 buttons[0].setState(-1);
                 checkScore();
-            } else if(buttons[3].getState() == 0) {
+            } else if (buttons[3].getState() == 0) {
                 buttons[3].setState(-1);
                 checkScore();
-            } else if(buttons[6].getState() == 0) {
+            } else if (buttons[6].getState() == 0) {
                 buttons[6].setState(-1);
                 checkScore();
             } else {
-                for(int x=0; x<200; x++) {
+                for (int x = 0; x < 200; x++) {
                     int random = generator.nextInt(9);
-                    if(buttons[random].getState() == 0) {
+                    if (buttons[random].getState() == 0) {
                         buttons[random].setState(-1);
                         checkScore();
                         break;
                     }
                 }
             }
-        } else if(buttons[1].getState() + buttons[4].getState() == 2 || buttons[4].getState() + buttons[7].getState() == 2 || buttons[1].getState() + buttons[7].getState() == 2) {
-            if(buttons[1].getState() == 0) {
+        } else if (buttons[1].getState() + buttons[4].getState() == 2 || buttons[4].getState() + buttons[7].getState() == 2 || buttons[1].getState() + buttons[7].getState() == 2) {
+            if (buttons[1].getState() == 0) {
                 buttons[1].setState(-1);
                 checkScore();
-            } else if(buttons[4].getState() == 0) {
+            } else if (buttons[4].getState() == 0) {
                 buttons[4].setState(-1);
                 checkScore();
-            } else if(buttons[7].getState() == 0) {
+            } else if (buttons[7].getState() == 0) {
                 buttons[7].setState(-1);
                 checkScore();
             } else {
-                for(int x=0; x<200; x++) {
+                for (int x = 0; x < 200; x++) {
                     int random = generator.nextInt(9);
-                    if(buttons[random].getState() == 0) {
+                    if (buttons[random].getState() == 0) {
                         buttons[random].setState(-1);
                         checkScore();
                         break;
                     }
                 }
             }
-        } else if(buttons[2].getState() + buttons[5].getState() == 2 || buttons[5].getState() + buttons[8].getState() == 2 || buttons[2].getState() + buttons[8].getState() == 2) {
-            if(buttons[2].getState() == 0) {
+        } else if (buttons[2].getState() + buttons[5].getState() == 2 || buttons[5].getState() + buttons[8].getState() == 2 || buttons[2].getState() + buttons[8].getState() == 2) {
+            if (buttons[2].getState() == 0) {
                 buttons[2].setState(-1);
                 checkScore();
-            } else if(buttons[5].getState() == 0) {
+            } else if (buttons[5].getState() == 0) {
                 buttons[5].setState(-1);
                 checkScore();
-            } else if(buttons[8].getState() == 0) {
+            } else if (buttons[8].getState() == 0) {
                 buttons[8].setState(-1);
                 checkScore();
             } else {
-                for(int x=0; x<200; x++) {
+                for (int x = 0; x < 200; x++) {
                     int random = generator.nextInt(9);
-                    if(buttons[random].getState() == 0) {
+                    if (buttons[random].getState() == 0) {
                         buttons[random].setState(-1);
                         checkScore();
                         break;
                     }
                 }
             }
-        } else if(buttons[0].getState() + buttons[4].getState() == 2 || buttons[4].getState() + buttons[8].getState() == 2 || buttons[0].getState() + buttons[8].getState() == 2) {
-            if(buttons[0].getState() == 0) {
+        } else if (buttons[0].getState() + buttons[4].getState() == 2 || buttons[4].getState() + buttons[8].getState() == 2 || buttons[0].getState() + buttons[8].getState() == 2) {
+            if (buttons[0].getState() == 0) {
                 buttons[0].setState(-1);
                 checkScore();
-            } else if(buttons[4].getState() == 0) {
+            } else if (buttons[4].getState() == 0) {
                 buttons[4].setState(-1);
                 checkScore();
-            } else if(buttons[8].getState() == 0) {
+            } else if (buttons[8].getState() == 0) {
                 buttons[8].setState(-1);
                 checkScore();
             } else {
-                for(int x=0; x<200; x++) {
+                for (int x = 0; x < 200; x++) {
                     int random = generator.nextInt(9);
-                    if(buttons[random].getState() == 0) {
+                    if (buttons[random].getState() == 0) {
                         buttons[random].setState(-1);
                         checkScore();
                         break;
                     }
                 }
             }
-        } else if(buttons[2].getState() + buttons[4].getState() == 2 || buttons[4].getState() + buttons[6].getState() == 2 || buttons[2].getState() + buttons[6].getState() == 2) {
-            if(buttons[2].getState() == 0) {
+        } else if (buttons[2].getState() + buttons[4].getState() == 2 || buttons[4].getState() + buttons[6].getState() == 2 || buttons[2].getState() + buttons[6].getState() == 2) {
+            if (buttons[2].getState() == 0) {
                 buttons[2].setState(-1);
                 checkScore();
-            } else if(buttons[4].getState() == 0) {
+            } else if (buttons[4].getState() == 0) {
                 buttons[4].setState(-1);
                 checkScore();
-            } else if(buttons[6].getState() == 0) {
+            } else if (buttons[6].getState() == 0) {
                 buttons[6].setState(-1);
                 checkScore();
             } else {
-                for(int x=0; x<200; x++) {
+                for (int x = 0; x < 200; x++) {
                     int random = generator.nextInt(9);
-                    if(buttons[random].getState() == 0) {
+                    if (buttons[random].getState() == 0) {
                         buttons[random].setState(-1);
                         checkScore();
                         break;
@@ -577,9 +579,9 @@ public class TicTacToe extends Application implements EventHandler<ActionEvent> 
                 }
             }
         } else {
-            for(int x=0; x<200; x++) {
+            for (int x = 0; x < 200; x++) {
                 int random = generator.nextInt(9);
-                if(buttons[random].getState() == 0) {
+                if (buttons[random].getState() == 0) {
                     buttons[random].setState(-1);
                     checkScore();
                     break;

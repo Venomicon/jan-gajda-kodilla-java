@@ -3,7 +3,9 @@ package com.kodilla.testing.weather.mock;
 import com.kodilla.testing.weather.stub.Temperatures;
 import com.kodilla.testing.weather.stub.WeatherForecast;
 import org.junit.*;
+
 import static org.mockito.Mockito.*;
+
 import java.util.*;
 
 public class WeatherForecastTestSuite {

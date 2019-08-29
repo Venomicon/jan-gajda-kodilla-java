@@ -11,11 +11,11 @@ public class ProductOrderService {
 
     public OrderDto processOrder(OrderRequest orderRequest) {
         boolean isPayed = paymentService.processPayment(orderRequest.getOrder());
-        if(isPayed) {
+        if (isPayed) {
             mailService.sendProduct(orderRequest.getOrder());
-            return new OrderDto(orderRequest.getUser(), orderRequest.getOrder(),true,true);
+            return new OrderDto(orderRequest.getUser(), orderRequest.getOrder(), true, true);
         } else {
-            return new OrderDto(orderRequest.getUser(), orderRequest.getOrder(),false,false);
+            return new OrderDto(orderRequest.getUser(), orderRequest.getOrder(), false, false);
         }
     }
 }

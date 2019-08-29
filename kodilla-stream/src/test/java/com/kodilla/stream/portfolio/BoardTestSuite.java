@@ -2,6 +2,7 @@ package com.kodilla.stream.portfolio;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,7 @@ public class BoardTestSuite {
                 .collect(toList());
 
         //Then
-        Assert.assertEquals(2,tasks.size());
+        Assert.assertEquals(2, tasks.size());
         Assert.assertEquals(user, tasks.get(0).getAssignedUser());
         Assert.assertEquals(user, tasks.get(1).getAssignedUser());
     }

@@ -40,9 +40,9 @@ public class FlightProcessor {
                 .filter(e -> e.getDepartureAirport().equals(transfer.getName()))
                 .filter(e -> e.getArrivalAirport().equals(arrival.getName()))
                 .collect(Collectors.toList());
-        for (Flight flight1: transfer1) {
-            for(Flight flight2: transfer2) {
-                if(flight1.getArrivalAirport().equals(flight2.getDepartureAirport())) {
+        for (Flight flight1 : transfer1) {
+            for (Flight flight2 : transfer2) {
+                if (flight1.getArrivalAirport().equals(flight2.getDepartureAirport())) {
                     System.out.println(flight1 + " with transfer: " + flight2);
                 }
             }

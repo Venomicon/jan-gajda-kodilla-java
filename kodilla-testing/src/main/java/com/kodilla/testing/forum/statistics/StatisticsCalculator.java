@@ -3,7 +3,7 @@ package com.kodilla.testing.forum.statistics;
 
 import java.util.*;
 
-public class StatisticsCalculator{
+public class StatisticsCalculator {
     Statistics statistics;
     int users;
     int comments;
@@ -21,7 +21,7 @@ public class StatisticsCalculator{
         posts = statistics.postsCount();
         comments = statistics.commentsCount();
         if (posts > 0) {
-            commentPerPost = (double)comments / (double)posts;
+            commentPerPost = (double) comments / (double) posts;
         }
         if (users > 0) {
             postPerUser = posts / users;

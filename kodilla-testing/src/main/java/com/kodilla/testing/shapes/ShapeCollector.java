@@ -16,8 +16,8 @@ public class ShapeCollector {
     public boolean removeFigure(Shape shape) {
         boolean result = false;
         if (figures.contains(shape)) {
-        figures.remove(shape);
-        result = true;
+            figures.remove(shape);
+            result = true;
         }
         return result;
     }
@@ -32,7 +32,7 @@ public class ShapeCollector {
 
     public void showFigures() {
         int counter = 0;
-        for(Shape shape: figures) {
+        for (Shape shape : figures) {
             System.out.println(shape);
             counter++;
         }

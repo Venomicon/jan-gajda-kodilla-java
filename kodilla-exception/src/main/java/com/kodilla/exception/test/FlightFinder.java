@@ -11,9 +11,9 @@ public class FlightFinder {
         possibleFlights.put("GDA", true);
         possibleFlights.put("WAW", false);
 
-        for(Map.Entry<String, Boolean> entry: possibleFlights.entrySet()) {
-            if(entry.getKey().equals(flight.getArrivalAirport())) {
-                if(entry.getValue()) {
+        for (Map.Entry<String, Boolean> entry : possibleFlights.entrySet()) {
+            if (entry.getKey().equals(flight.getArrivalAirport())) {
+                if (entry.getValue()) {
                     System.out.println("Flight to airport " + entry.getKey() + " is available.");
                 } else {
                     throw new RouteNotFoundException("Flight to airport " + entry.getKey() + " is unavailable.");
@@ -23,7 +23,7 @@ public class FlightFinder {
     }
 
     public static void main(String[] args) {
-        Flight flightOne = new Flight("JFK","WAW");
+        Flight flightOne = new Flight("JFK", "WAW");
         FlightFinder finder = new FlightFinder();
 
         try {

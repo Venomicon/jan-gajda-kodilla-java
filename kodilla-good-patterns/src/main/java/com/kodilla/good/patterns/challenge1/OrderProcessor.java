@@ -15,7 +15,7 @@ public class OrderProcessor {
 
     public OrderDto processOrder(OrderRequest orderRequest) {
         boolean isPayed = paymentService.processPayment();
-        if(producersCollection.getCollection().size() > 0) {
+        if (producersCollection.getCollection().size() > 0) {
             for (int i = 0; i < producersCollection.getCollection().size(); i++) {
                 if (producersCollection.getCollection().get(i).getAvailableProducts().contains(orderRequest.getOrder().getProduct())) {
                     if (isPayed) {

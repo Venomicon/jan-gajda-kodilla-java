@@ -48,7 +48,7 @@ public class ShapesTestSuite {
         collector.removeFigure(circle);
 
         //Then
-        Assert.assertEquals(0,collector.getFiguresSize());
+        Assert.assertEquals(0, collector.getFiguresSize());
     }
 
     @Test
