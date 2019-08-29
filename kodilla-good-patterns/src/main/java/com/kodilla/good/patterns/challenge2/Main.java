@@ -17,6 +17,7 @@ public class Main {
         Flight flight11 = new Flight(111, "POZ", "WAW");
         Flight flight12 = new Flight(112, "KRK", "POZ");
         Flight flight13 = new Flight(113, "POZ", "GDA");
+        Flight flight14 = new Flight(114, "POZ", "GDA");
 
         Airport krk = new Airport("KRK");
         Airport waw = new Airport("WAW");
@@ -39,11 +40,12 @@ public class Main {
         flightsList.addFlight(flight11);
         flightsList.addFlight(flight12);
         flightsList.addFlight(flight13);
+        flightsList.addFlight(flight14);
 
         FlightProcessor flightProcessor = new FlightProcessor(flights);
         flightProcessor.showAllDepartures(krk);
         flightProcessor.showAllArrivals(krk);
         flightProcessor.showAllFlights();
-        flightProcessor.findFlightThru(krk, gda, waw);
+        flightProcessor.findFlightThru(krk, gda, poz);
     }
 }
